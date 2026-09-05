@@ -71,7 +71,7 @@ header.scrolled{
 nav{display:flex;gap:34px}
 nav a{
   font-family:var(--mono);
-  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  font-size: 15px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim);
   position:relative;transition:color .3s;
 }
@@ -83,10 +83,10 @@ nav a::after{
 nav a:hover{color:var(--cream)}
 nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .hdr-btn{
-  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
   background:var(--cream);color:var(--bg);
   border:1px solid var(--cream);
-  padding:12px 26px;
+  padding:15px 34px;
   transition:background .35s,color .35s,border-color .35s,transform .35s;
   white-space:nowrap;
   display:inline-flex;align-items:center;gap:10px;
@@ -95,7 +95,7 @@ nav a:hover::after{transform:scaleX(1);transform-origin:left}
 @media(max-width:1020px){nav{display:none}}
 @media(max-width:680px){
   header,header.scrolled{padding:14px 20px}
-  .hdr-btn{padding:8px 14px}
+  .hdr-btn{padding:12px 22px}
 }
 
 /* ---------- hero ---------- */
@@ -106,7 +106,7 @@ nav a:hover::after{transform:scaleX(1);transform-origin:left}
   position:relative;
 }
 .hero-kicker{
-  font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.3em;text-transform:uppercase;
   color:var(--dim);margin-bottom:4vh;
   display:flex;align-items:center;gap:18px;
 }
@@ -145,30 +145,24 @@ body.loaded .mask>span{transform:none}
   padding-top:26px;
   flex-wrap:wrap;
 }
-.hero-right{max-width:320px}
-.hero-right p{font-size:17px;font-weight:300;color:var(--dim)}
+.hero-right{max-width:400px}
+.hero-right p{font-size:clamp(18px,1.6vw,22px);font-weight:300;color:var(--dim);line-height:1.55}
 .btn-solid{
   display:inline-flex;align-items:center;gap:12px;
   margin-top:26px;
-  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
   background:var(--cream);color:var(--bg);
-  padding:18px 34px;
+  padding:22px 44px;
   transition:background .35s,color .35s,transform .35s;
 }
 .btn-solid:hover{background:var(--sage);color:#1C2117;transform:translateY(-2px)}
-.hero-link{
-  display:inline-flex;align-items:center;gap:10px;margin-top:24px;
-  font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--cream);
-  border:1px solid var(--line);
-  padding:14px 26px;
-  transition:background .35s,color .35s,border-color .35s,transform .35s;
-}
-.hero-link:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
 .hero-meta{
-  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim2);text-align:right;line-height:2.1;
+  font-family:var(--mono);font-size:clamp(15px,1.3vw,17px);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);text-align:right;line-height:2;
+  border-top:1px solid var(--sage);
+  padding-top:20px;
 }
+.hero-meta .coords{color:var(--sage)}
 @media(max-width:760px){
   .hero{padding:120px 20px 0}
   .hero-bottom{flex-direction:column;align-items:flex-start}
@@ -199,7 +193,7 @@ body.loaded .mask>span{transform:none}
 section{padding:140px 44px}
 @media(max-width:760px){section{padding:96px 20px}}
 .sec-label{
-  font-family:var(--mono);font-size:14px;letter-spacing:.24em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--sage);margin-bottom:8vh;
   display:flex;align-items:center;gap:18px;
 }
@@ -236,7 +230,7 @@ section{padding:140px 44px}
 .g-item:nth-child(2){margin-top:clamp(40px,6vw,96px)}
 .g-cap{
   position:absolute;left:16px;bottom:16px;
-  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--cream);
   background:rgba(31,36,26,.72);
   backdrop-filter:blur(8px);
@@ -244,7 +238,7 @@ section{padding:140px 44px}
 }
 .g-num{
   position:absolute;top:16px;right:16px;
-  font-family:var(--mono);font-size:13px;letter-spacing:.14em;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;
   color:var(--cream);
   background:rgba(31,36,26,.72);
   padding:9px 14px;
@@ -266,7 +260,7 @@ section{padding:140px 44px}
 }
 .stat-n em{font-size:.7em;margin-left:2px}
 .stat-l{
-  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim2);margin-top:14px;
 }
 @media(max-width:960px){
@@ -276,9 +270,16 @@ section{padding:140px 44px}
   .stat:nth-child(2){border-right:none}
 }
 @media(max-width:520px){
-  .stats{flex-direction:column}
-  .stat{border-right:none;border-bottom:1px solid var(--line);padding:24px 0}
+  .stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  .stat{
+    border-right:none;border-bottom:1px solid var(--line);
+    padding:20px 16px 20px 0;
+  }
+  .stat:nth-child(odd){border-right:1px solid var(--line)}
+  .stat:nth-child(odd){padding-right:16px}
   .stat+.stat{padding-left:0}
+  .stat-n{font-size:34px}
+  .stat-l{font-size:12px;letter-spacing:.14em}
 }
 
 /* ---------- directions ---------- */
@@ -296,7 +297,7 @@ section{padding:140px 44px}
 }
 .dir-row:hover{background:var(--cream);--ink:#1F241A;--sub:rgba(31,36,26,.6)}
 .dir-num{
-  font-family:var(--mono);font-size:13px;color:var(--sage);letter-spacing:.1em;
+  font-family:var(--mono);font-size: 15px;color:var(--sage);letter-spacing:.1em;
   transition:color .45s;
 }
 .dir-row:hover .dir-num{color:#7A8A45}
@@ -311,7 +312,7 @@ section{padding:140px 44px}
   margin-top:10px;transition:color .45s;
 }
 .dir-tag{
-  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--sub);text-align:right;line-height:2;transition:color .45s;
 }
 .dir-row:hover .dir-tag,.dir-row:hover .dir-main p{opacity:0}
@@ -373,7 +374,7 @@ section{padding:140px 44px}
 }
 .doc-idx{
   position:absolute;top:20px;left:22px;
-  font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--dim2);
 }
 .doc-name{
@@ -382,7 +383,7 @@ section{padding:140px 44px}
   margin-top:28px;
 }
 .doc-role{
-  font-family:var(--mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--sage);margin:16px 0 20px;
 }
 .doc-bio{font-size:17px;font-weight:300;color:var(--dim);max-width:40ch}
@@ -405,7 +406,7 @@ section{padding:140px 44px}
 }
 .review-quote.out{opacity:0}
 .review-meta{
-  font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--dim);margin-top:44px;transition:opacity .35s;
 }
 .review-meta b{color:var(--cream);font-weight:500}
@@ -413,7 +414,7 @@ section{padding:140px 44px}
 .review-ctl{
   margin-top:48px;display:flex;align-items:center;gap:36px;
 }
-.rev-counter{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--dim)}
+.rev-counter{font-family:var(--mono);font-size: 15px;letter-spacing:.14em;color:var(--dim)}
 .rev-counter b{color:var(--cream);font-weight:500}
 .rev-bar{flex:1;height:1px;background:var(--line);position:relative}
 .rev-bar span{
@@ -431,16 +432,23 @@ section{padding:140px 44px}
 }
 .rev-btns a:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
 @media(max-width:680px){
-  .review-wrap{grid-template-columns:1fr;row-gap:28px}
-  .review-wrap>div{order:1}
-  .rev-btns{order:2;width:100%;justify-content:space-between}
-  .rev-btns.prev{grid-column:1;order:2}
-  .rev-btns.next{grid-column:1;order:3;justify-content:flex-end}
+  .review-wrap{
+    grid-template-columns:auto auto;
+    justify-content:space-between;
+    row-gap:28px;
+  }
+  .review-wrap>div:not(.rev-btns){grid-column:1/-1}
+  .rev-btns{grid-column:auto}
+  .rev-btns.prev{order:2}
+  .rev-btns.next{order:3}
+  .rev-btns a{width:56px;height:56px;font-size:20px}
+  .review-quote{min-height:0}
+  .review-ctl{margin-top:36px;gap:24px}
 }
 
 /* ---------- contacts ---------- */
 .contacts-grid{
-  display:grid;grid-template-columns:1.15fr 1fr;gap:90px;align-items:start;
+  display:grid;grid-template-columns:1fr 1.35fr;gap:64px;align-items:start;
 }
 .addr .a1{
   display:block;font-family:var(--serif);font-style:italic;font-weight:400;
@@ -464,32 +472,34 @@ section{padding:140px 44px}
 .c-link{
   font-family:var(--serif);font-size:clamp(26px,3vw,40px);
   padding:22px 34px;
-  border:1px solid var(--line);
+  border:1px solid var(--cream);
+  background:var(--cream);color:var(--bg);
   display:flex;justify-content:space-between;align-items:center;gap:20px;
   transition:background .4s,color .4s,border-color .4s,transform .4s;
 }
-.c-link .cl-sub{font-family:var(--mono);font-size:14px;color:var(--sage);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-.c-link:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
-.c-link:hover .cl-sub{color:#7A8A45}
+.c-link .cl-sub{font-family:var(--mono);font-size:14px;color:#7A8A45;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.c-link:hover{background:var(--sage);color:#1C2117;border-color:var(--sage);transform:translateY(-2px)}
 .c-note{
-  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--dim2);margin:28px 0 40px;
 }
 .c-hours{font-family:var(--mono);font-size:15px;letter-spacing:.08em;color:var(--dim);line-height:2.3}
 .c-hours b{color:var(--cream);font-weight:500}
-@media(max-width:860px){.contacts-grid{grid-template-columns:1fr;gap:56px}}
+@media(max-width:860px){
+  .contacts-grid{grid-template-columns:1fr;gap:56px}
+}
 .map-wrap{
-  margin-top:90px;
+  margin-top:44px;
   border:1px solid var(--line);
   position:relative;overflow:hidden;
 }
 .map-frame{
-  display:block;width:100%;height:420px;border:0;
+  display:block;width:100%;height:340px;border:0;
   filter:grayscale(.35) sepia(.12);
 }
 .map-tag{
   position:absolute;top:18px;left:18px;z-index:5;
-  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--cream);
   background:rgba(31,36,26,.85);
   padding:10px 18px;
@@ -497,7 +507,7 @@ section{padding:140px 44px}
 }
 .map-link{
   position:absolute;bottom:18px;right:18px;z-index:5;
-  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
   background:var(--cream);color:var(--bg);
   padding:12px 20px;
   transition:background .35s,transform .35s;
@@ -521,7 +531,7 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 .f-meta{
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   padding:26px 44px;border-top:1px solid var(--line);
-  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim2);
 }
 @media(max-width:680px){.f-meta{padding:22px 20px}}
@@ -549,7 +559,7 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
     <a href="#reviews">отзывы</a>
     <a href="#contacts">контакты</a>
   </nav>
-  <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="hdr-btn">мессенджер →</a>
+  <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="hdr-btn">записаться →</a>
 </header>
 
 <main>
@@ -564,12 +574,12 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   <div class="hero-bottom">
     <div class="hero-right">
       <p>Тренировки под контролем тренеров. Без шаблонов, боли и самодеятельности — от диагностики до результата.</p>
-      <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="btn-solid">Написать в мессенджер →</a>
+      <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="btn-solid">Написать →</a>
     </div>
     <div class="hero-meta">
       Большая Посадская, 16<br>
       СПб · Петроградская сторона<br>
-      59.97°N — 30.31°E
+      <span class="coords">59.97°N — 30.31°E</span>
     </div>
   </div>
 </section>
@@ -588,7 +598,6 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
     </p>
     <div class="about-side reveal" style="--d:.15s">
       <p>ОСЬ — студия лечебной физкультуры на Петроградской стороне. Работаем с осанкой, спиной и здоровой нагрузкой. Малые группы, никакого «сам себе тренер».</p>
-      <a href="#directions" class="hero-link">Смотреть направления ↓</a>
     </div>
   </div>
   <div class="gallery reveal">
@@ -730,16 +739,16 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
         <a class="c-link" href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener">Telegram <span class="cl-sub">Записаться →</span></a>
       </div>
       <p class="c-note">Отвечаем в течение часа</p>
+      <div class="map-wrap">
+        <div class="map-tag">Локация · Большая Посадская, 16</div>
+        <iframe class="map-frame"
+          src="https://yandex.ru/map-widget/v1/?ll=30.325669%2C59.959697&pt=30.325669,59.959697&z=16.5"
+          title="Карта: студия ЛФК ОСЬ, Большая Посадская 16"
+          loading="lazy"
+          allowfullscreen></iframe>
+        <a class="map-link" href="https://yandex.ru/maps/org/tsentr_lfk_i_massazha/62061529451/?ll=30.325669%2C59.959697&z=16.5" target="_blank" rel="noopener">Открыть в Яндекс.Картах →</a>
+      </div>
     </div>
-  </div>
-  <div class="map-wrap reveal">
-    <div class="map-tag">Локация · Большая Посадская, 16</div>
-    <iframe class="map-frame"
-      src="https://yandex.ru/map-widget/v1/?text=Санкт-Петербург%2C%20Большая%20Посадская%2016&z=16"
-      title="Карта: студия ЛФК ОСЬ, Большая Посадская 16"
-      loading="lazy"
-      allowfullscreen></iframe>
-    <a class="map-link" href="https://yandex.ru/maps/?text=Санкт-Петербург%2C%20Большая%20Посадская%2016&z=16" target="_blank" rel="noopener">Открыть в Яндекс.Картах →</a>
   </div>
 </section>
 
