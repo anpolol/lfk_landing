@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ОСЬ — студия ЛФК в Санкт-Петербурге</title>
+<meta name="description" content="Студия лечебной физкультуры ОСЬ на Большой Посадской, 16. Тренировки под контролем тренеров: спина и шея, осанка и сколиоз, мягкая нагрузка, здоровый фитнес.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1F241A;
+  --bg2:#262C20;
+  --cream:#EDE8DA;
+  --dim:rgba(237,232,218,.55);
+  --dim2:rgba(237,232,218,.3);
+  --sage:#A9B96C;
+  --line:rgba(237,232,218,.14);
+  --serif:'Playfair Display',serif;
+  --sans:'Manrope',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--cream);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--sage);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--sage)}
+.mono{font-family:var(--mono)}
+
+.grain{
+  position:fixed;inset:0;z-index:998;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.gridlines{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(237,232,218,.05) 1px,transparent 1px);
+  background-size:calc(100%/6) 100%;
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 44px;
+  transition:transform .5s cubic-bezier(.16,1,.3,1),background .4s,padding .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+header.hide{transform:translateY(-110%)}
+header.scrolled{
+  background:rgba(31,36,26,.82);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:14px 44px;
+  border-bottom-color:var(--line);
+}
+.logo{
+  font-family:var(--serif);
+  font-size:24px;letter-spacing:.3em;font-weight:500;
+}
+nav{display:flex;gap:34px}
+nav a{
+  font-family:var(--mono);
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);
+  position:relative;transition:color .3s;
+}
+nav a::after{
+  content:'';position:absolute;left:0;bottom:-6px;width:100%;height:1px;
+  background:var(--sage);transform:scaleX(0);transform-origin:right;
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+}
+nav a:hover{color:var(--cream)}
+nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.hdr-btn{
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--cream);color:var(--bg);
+  border:1px solid var(--cream);
+  padding:12px 26px;
+  transition:background .35s,color .35s,border-color .35s,transform .35s;
+  white-space:nowrap;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.hdr-btn:hover{background:var(--sage);border-color:var(--sage);color:#1C2117;transform:translateY(-2px)}
+@media(max-width:1020px){nav{display:none}}
+@media(max-width:680px){
+  header,header.scrolled{padding:14px 20px}
+  .hdr-btn{padding:8px 14px}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:150px 44px 0;
+  position:relative;
+}
+.hero-kicker{
+  font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:4vh;
+  display:flex;align-items:center;gap:18px;
+}
+.hero-kicker::before{content:'';width:44px;height:1px;background:var(--sage)}
+.hero h1{font-weight:400}
+.mask{display:block;overflow:hidden}
+.mask>span{display:inline-block;transform:translateY(118%);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+body.loaded .mask>span{transform:none}
+.hl1 .mask>span{transition-delay:.15s}
+.hl2 .mask>span{transition-delay:.3s}
+.hl3 .mask>span{transition-delay:.45s}
+.hl1 span{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(26px,3.4vw,46px);color:var(--sage);
+  display:inline-block;
+}
+.hl2 span,.hl3 span{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(58px,11.5vw,168px);
+  line-height:.94;letter-spacing:-.025em;text-transform:uppercase;
+}
+.hl3 span{
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(237,232,218,.85);
+}
+.hl3 em{
+  font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;
+  -webkit-text-stroke:0;color:var(--sage);
+  letter-spacing:0;
+}
+.hero-bottom{
+  margin-top:9vh;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
+  padding-bottom:40px;
+  border-top:1px solid var(--line);
+  padding-top:26px;
+  flex-wrap:wrap;
+}
+.hero-right{max-width:320px}
+.hero-right p{font-size:17px;font-weight:300;color:var(--dim)}
+.btn-solid{
+  display:inline-flex;align-items:center;gap:12px;
+  margin-top:26px;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--cream);color:var(--bg);
+  padding:18px 34px;
+  transition:background .35s,color .35s,transform .35s;
+}
+.btn-solid:hover{background:var(--sage);color:#1C2117;transform:translateY(-2px)}
+.hero-link{
+  display:inline-flex;align-items:center;gap:10px;margin-top:24px;
+  font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream);
+  border:1px solid var(--line);
+  padding:14px 26px;
+  transition:background .35s,color .35s,border-color .35s,transform .35s;
+}
+.hero-link:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
+.hero-meta{
+  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim2);text-align:right;line-height:2.1;
+}
+@media(max-width:760px){
+  .hero{padding:120px 20px 0}
+  .hero-bottom{flex-direction:column;align-items:flex-start}
+  .hero-meta{text-align:left}
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:20px 0;white-space:nowrap;
+}
+.marquee-track{
+  display:inline-flex;
+  animation:scroll 30s linear infinite;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{
+  font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,30px);
+  color:var(--cream);padding-right:16px;
+}
+.marquee-track i{
+  font-family:var(--mono);font-style:normal;font-size:.6em;color:var(--sage);
+  padding-right:16px;vertical-align:middle;
+}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:140px 44px}
+@media(max-width:760px){section{padding:96px 20px}}
+.sec-label{
+  font-family:var(--mono);font-size:14px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:8vh;
+  display:flex;align-items:center;gap:18px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* ---------- about ---------- */
+.about-grid{
+  display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:start;
+}
+.about-big{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(26px,3.6vw,50px);line-height:1.28;letter-spacing:-.005em;
+  max-width:22ch;
+}
+.about-side{
+  display:flex;flex-direction:column;gap:48px;padding-top:12px;
+}
+.about-side p{font-size:17px;font-weight:300;color:var(--dim);max-width:30ch}
+.gallery{
+  display:grid;
+  grid-template-columns:1.25fr 1fr;
+  gap:clamp(24px,3vw,48px);
+  align-items:start;
+  margin-top:10vh;
+}
+.g-item{position:relative}
+.g-item img{
+  width:100%;display:block;
+  aspect-ratio:4/3;object-fit:cover;
+  filter:grayscale(1) sepia(.25) brightness(.82) contrast(1.05);
+  transition:filter .6s,transform .6s cubic-bezier(.16,1,.3,1);
+}
+.g-item:hover img{filter:grayscale(.2) sepia(.1) brightness(.92);transform:scale(1.015)}
+.g-item:nth-child(2){margin-top:clamp(40px,6vw,96px)}
+.g-cap{
+  position:absolute;left:16px;bottom:16px;
+  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);
+  background:rgba(31,36,26,.72);
+  backdrop-filter:blur(8px);
+  padding:9px 16px;
+}
+.g-num{
+  position:absolute;top:16px;right:16px;
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;
+  color:var(--cream);
+  background:rgba(31,36,26,.72);
+  padding:9px 14px;
+}
+@media(max-width:680px){
+  .gallery{grid-template-columns:1fr}
+  .g-item:nth-child(2){margin-top:0}
+}
+.stats{display:flex;border-top:1px solid var(--line);margin-top:10vh}
+.stat{
+  flex:1;padding:36px 28px 8px 0;
+  border-right:1px solid var(--line);
+}
+.stat:last-child{border-right:none;padding-right:0}
+.stat+.stat{padding-left:28px}
+.stat-n{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(34px,4.4vw,58px);line-height:1;
+}
+.stat-n em{font-size:.7em;margin-left:2px}
+.stat-l{
+  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim2);margin-top:14px;
+}
+@media(max-width:960px){
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .stats{flex-wrap:wrap}
+  .stat{min-width:45%}
+  .stat:nth-child(2){border-right:none}
+}
+@media(max-width:520px){
+  .stats{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid var(--line);padding:24px 0}
+  .stat+.stat{padding-left:0}
+}
+
+/* ---------- directions ---------- */
+.directions{background:var(--bg2)}
+.dir-list{border-bottom:1px solid var(--line)}
+.dir-row{
+  --ink:var(--cream);--sub:var(--dim);
+  display:grid;
+  grid-template-columns:90px 1fr auto 70px;
+  align-items:center;gap:36px;
+  padding:52px 20px;
+  border-top:1px solid var(--line);
+  transition:background .45s,color .45s;
+  position:relative;
+}
+.dir-row:hover{background:var(--cream);--ink:#1F241A;--sub:rgba(31,36,26,.6)}
+.dir-num{
+  font-family:var(--mono);font-size:13px;color:var(--sage);letter-spacing:.1em;
+  transition:color .45s;
+}
+.dir-row:hover .dir-num{color:#7A8A45}
+.dir-row h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,3.6vw,50px);line-height:1.1;color:var(--ink);
+  transition:color .45s;
+  max-width:12ch;
+}
+.dir-row p{
+  font-size:16px;font-weight:300;color:var(--sub);max-width:42ch;
+  margin-top:10px;transition:color .45s;
+}
+.dir-tag{
+  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sub);text-align:right;line-height:2;transition:color .45s;
+}
+.dir-arr{
+  font-size:26px;color:var(--sage);text-align:right;
+  transform:translateX(-14px);opacity:0;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),opacity .45s,color .45s;
+}
+.dir-row:hover .dir-arr{transform:none;opacity:1;color:#7A8A45}
+.dir-photo{
+  position:absolute;top:12px;bottom:12px;right:20px;width:calc(50% - 20px);
+  overflow:hidden;pointer-events:none;
+  clip-path:inset(0 0 0 100%);
+  transition:clip-path .65s cubic-bezier(.16,1,.3,1);
+}
+.dir-row:hover .dir-photo{clip-path:inset(0 0 0 0)}
+.dir-row:hover .dir-tag,.dir-row:hover .dir-main p{opacity:0}
+.dir-row .dir-tag,.dir-row .dir-main p{transition:color .45s,opacity .45s}
+.dir-photo img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) sepia(.25) brightness(.82) contrast(1.05);
+  transform:scale(1.12);
+  transition:transform .9s cubic-bezier(.16,1,.3,1);
+}
+.dir-row:hover .dir-photo img{transform:scale(1)}
+@media (hover:none), (max-width:860px){.dir-photo{display:none}}
+@media(max-width:860px){
+  .dir-row{grid-template-columns:1fr;gap:14px;padding:40px 4px}
+  .dir-arr{display:none}
+  .dir-tag{text-align:left}
+  .dir-row h3{max-width:none}
+}
+
+/* ---------- doctors ---------- */
+.docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.doc{border-top:1px solid var(--line);padding-top:32px}
+.doc-photo{
+  aspect-ratio:3/3.6;
+  background:linear-gradient(155deg,#39422B 0%,#232A1B 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.doc-letter{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(120px,15vw,230px);line-height:1;
+  color:rgba(237,232,218,.16);
+  transition:transform .8s cubic-bezier(.16,1,.3,1),color .6s;
+  user-select:none;
+}
+.doc:hover .doc-letter{transform:scale(1.12) rotate(-4deg);color:rgba(237,232,218,.3)}
+.doc-photo::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(169,185,108,.1),transparent 60%);
+}
+.doc-idx{
+  position:absolute;top:20px;left:22px;
+  font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim2);
+}
+.doc-name{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(30px,3.4vw,46px);line-height:1.05;
+  margin-top:28px;
+}
+.doc-role{
+  font-family:var(--mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sage);margin:16px 0 20px;
+}
+.doc-bio{font-size:17px;font-weight:300;color:var(--dim);max-width:40ch}
+@media(max-width:860px){.docs-grid{grid-template-columns:1fr;gap:56px}}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--bg2)}
+.reviews-inner{max-width:980px}
+.review-wrap{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:clamp(24px,4vw,64px);
+}
+.review-quote{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(24px,3.4vw,44px);line-height:1.35;
+  min-height:5em;
+  transition:opacity .35s;
+}
+.review-quote.out{opacity:0}
+.review-meta{
+  font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);margin-top:44px;transition:opacity .35s;
+}
+.review-meta b{color:var(--cream);font-weight:500}
+.review-meta.out{opacity:0}
+.review-ctl{
+  margin-top:48px;display:flex;align-items:center;gap:36px;
+}
+.rev-counter{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--dim)}
+.rev-counter b{color:var(--cream);font-weight:500}
+.rev-bar{flex:1;height:1px;background:var(--line);position:relative}
+.rev-bar span{
+  position:absolute;left:0;top:0;height:100%;width:0;background:var(--sage);
+  display:block;
+}
+.rev-btns{display:flex;gap:16px}
+.rev-btns a{
+  width:64px;height:64px;
+  border:1px solid var(--line);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--cream);
+  cursor:pointer;flex-shrink:0;
+  transition:background .35s,color .35s,border-color .35s,transform .35s;
+}
+.rev-btns a:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
+@media(max-width:680px){
+  .review-wrap{grid-template-columns:1fr;justify-items:start;row-gap:20px}
+  .rev-btns{order:3}
+}
+
+/* ---------- contacts ---------- */
+.contacts-grid{
+  display:grid;grid-template-columns:1.15fr 1fr;gap:90px;align-items:start;
+}
+.addr .a1{
+  display:block;font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(30px,4vw,56px);color:var(--sage);
+}
+.addr .a2{
+  display:block;font-family:var(--serif);font-weight:400;
+  font-size:clamp(40px,6.4vw,92px);line-height:1.02;letter-spacing:-.01em;
+}
+.addr .a3{
+  display:block;font-family:var(--sans);font-weight:700;
+  font-size:clamp(40px,6.4vw,92px);line-height:1.05;text-transform:uppercase;
+  color:transparent;-webkit-text-stroke:1.5px rgba(237,232,218,.85);
+  margin:6px 0 36px;
+}
+.addr .a3 em{
+  font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;
+  font-size:.5em;-webkit-text-stroke:0;letter-spacing:0;
+}
+.c-links{display:flex;flex-direction:column;gap:14px}
+.c-link{
+  font-family:var(--serif);font-size:clamp(26px,3vw,40px);
+  padding:22px 34px;
+  border:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  transition:background .4s,color .4s,border-color .4s,transform .4s;
+}
+.c-link .cl-sub{font-family:var(--mono);font-size:14px;color:var(--sage);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.c-link:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
+.c-link:hover .cl-sub{color:#7A8A45}
+.c-note{
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim2);margin:28px 0 40px;
+}
+.c-hours{font-family:var(--mono);font-size:15px;letter-spacing:.08em;color:var(--dim);line-height:2.3}
+.c-hours b{color:var(--cream);font-weight:500}
+@media(max-width:860px){.contacts-grid{grid-template-columns:1fr;gap:56px}}
+.map-wrap{
+  margin-top:90px;
+  border:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.map-frame{
+  display:block;width:100%;height:420px;border:0;
+  filter:grayscale(.35) sepia(.12);
+}
+.map-tag{
+  position:absolute;top:18px;left:18px;z-index:5;
+  font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);
+  background:rgba(31,36,26,.85);
+  padding:10px 18px;
+  pointer-events:none;
+}
+.map-link{
+  position:absolute;bottom:18px;right:18px;z-index:5;
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--cream);color:var(--bg);
+  padding:12px 20px;
+  transition:background .35s,transform .35s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.map-link:hover{background:var(--sage);color:#1C2117;transform:translateY(-2px)}
+
+/* ---------- footer ---------- */
+footer{overflow:hidden;border-top:1px solid var(--line)}
+.f-word{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(120px,27vw,400px);
+  line-height:.72;letter-spacing:.02em;
+  text-align:center;
+  color:transparent;-webkit-text-stroke:1.5px rgba(237,232,218,.28);
+  margin-bottom:-.09em;
+  user-select:none;
+  transition:-webkit-text-stroke-color .6s;
+}
+.f-word:hover{-webkit-text-stroke-color:rgba(169,185,108,.5)}
+.f-meta{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:26px 44px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim2);
+}
+@media(max-width:680px){.f-meta{padding:22px 20px}}
+
+/* ---------- reveal ---------- */
+.reveal{
+  opacity:0;transform:translateY(44px);
+  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);
+  transition-delay:var(--d,0s);
+}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="gridlines"></div>
+
+<header id="header">
+  <a href="#" class="logo">ОСЬ</a>
+  <nav>
+    <a href="#about">студия</a>
+    <a href="#directions">направления</a>
+    <a href="#docs">тренеры</a>
+    <a href="#reviews">отзывы</a>
+    <a href="#contacts">контакты</a>
+  </nav>
+  <a href="https://t.me/username" target="_blank" rel="noopener" class="hdr-btn">мессенджер →</a>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-kicker">Студия лечебной физкультуры</div>
+  <h1>
+    <span class="hl1"><span class="mask"><span>Ровная ось —</span></span></span>
+    <span class="hl2"><span class="mask"><span>Свободное</span></span></span>
+    <span class="hl3"><span class="mask"><span>тело <em>в движении</em></span></span></span>
+  </h1>
+  <div class="hero-bottom">
+    <div class="hero-right">
+      <p>Тренировки под контролем тренеров. Без шаблонов, боли и самодеятельности — от диагностики до результата.</p>
+      <a href="https://t.me/username" target="_blank" rel="noopener" class="btn-solid">Написать в мессенджер →</a>
+    </div>
+    <div class="hero-meta">
+      Большая Посадская, 16<br>
+      СПб · Петроградская сторона<br>
+      59.97°N — 30.31°E
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<section id="about">
+  <div class="sec-label reveal">( 01 ) — о студии</div>
+  <div class="about-grid">
+    <p class="about-big reveal">
+      Каждое занятие — под <em>контролем тренера</em>.
+      Мы следим за техникой, дыханием и самочувствием.
+      Программа строится под <em>ваше тело</em> — не под шаблон.
+    </p>
+    <div class="about-side reveal" style="--d:.15s">
+      <p>ОСЬ — студия лечебной физкультуры на Петроградской стороне. Работаем с осанкой, спиной и здоровой нагрузкой. Малые группы, никакого «сам себе тренер».</p>
+      <a href="#directions" class="hero-link">Смотреть направления ↓</a>
+    </div>
+  </div>
+  <div class="gallery reveal">
+    <div class="g-item">
+      <img src="https://picsum.photos/seed/os-hall/1200/900.jpg" alt="Зал студии ЛФК ОСЬ" loading="lazy">
+      <span class="g-cap">Зал для групповых занятий</span>
+      <span class="g-num">01</span>
+    </div>
+    <div class="g-item">
+      <img src="https://picsum.photos/seed/os-train/900/700.jpg" alt="Тренировка под контролем тренера" loading="lazy">
+      <span class="g-cap">Занятие под контролем тренера</span>
+      <span class="g-num">02</span>
+    </div>
+  </div>
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat-n">10<em>+</em></div>
+      <div class="stat-l">лет практики тренеров</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">4</div>
+      <div class="stat-l">направления нагрузки</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">2</div>
+      <div class="stat-l">тренера ведут занятия</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">6</div>
+      <div class="stat-l">человек максимум в группе</div>
+    </div>
+  </div>
+</section>
+
+<section class="directions" id="directions">
+  <div class="sec-label reveal">( 02 ) — направления</div>
+  <div class="dir-list">
+    <a class="dir-row reveal" href="#contacts" data-img="https://picsum.photos/seed/os-back/600/800.jpg" data-label="/01 — спина и шея">
+      <div class="dir-num">/01</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-back/900/500.jpg" alt="Спина и шея" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>Спина и шея</h3>
+        <p>Снимаем напряжение офисной осанки, укрепляем мышечный корсет, работаем с болью от сидячего образа жизни.</p>
+      </div>
+      <div class="dir-tag">офисная осанка<br>мышечный корсет</div>
+      <div class="dir-arr">→</div>
+    </a>
+    <a class="dir-row reveal" href="#contacts" style="--d:.08s" data-img="https://picsum.photos/seed/os-posture/600/800.jpg" data-label="/02 — осанка и сколиоз">
+      <div class="dir-num">/02</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-posture/900/500.jpg" alt="Осанка и сколиоз" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>Осанка и сколиоз</h3>
+        <p>Коррекция осанки у детей и взрослых. Работа со сколиозом под наблюдением тренера, контроль динамики.</p>
+      </div>
+      <div class="dir-tag">дети и взрослые<br>контроль тренера</div>
+      <div class="dir-arr">→</div>
+    </a>
+    <a class="dir-row reveal" href="#contacts" style="--d:.16s" data-img="https://picsum.photos/seed/os-soft/600/800.jpg" data-label="/03 — мягкая нагрузка">
+      <div class="dir-num">/03</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-soft/900/500.jpg" alt="Мягкая нагрузка" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>Мягкая нагрузка</h3>
+        <p>Бережный формат для восстановления после травм и в период ремиссии — движение без боли и стресса.</p>
+      </div>
+      <div class="dir-tag">восстановление<br>ремиссия</div>
+      <div class="dir-arr">→</div>
+    </a>
+    <a class="dir-row reveal" href="#contacts" style="--d:.24s" data-img="https://picsum.photos/seed/os-fit/600/800.jpg" data-label="/04 — здоровый фитнес">
+      <div class="dir-num">/04</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-fit/900/500.jpg" alt="Здоровый фитнес" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>«Здоровый фитнес»</h3>
+        <p>Функциональные тренировки без ударных нагрузок — форма и выносливость без риска для суставов.</p>
+      </div>
+      <div class="dir-tag">без ударных нагрузок</div>
+      <div class="dir-arr">→</div>
+    </a>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="sec-label reveal">( 03 ) — тренеры</div>
+  <div class="docs-grid">
+    <div class="doc reveal">
+      <div class="doc-photo">
+        <span class="doc-idx">тр. /01</span>
+        <span class="doc-letter">И</span>
+      </div>
+      <h3 class="doc-name">Иван</h3>
+      <div class="doc-role">Тренер ЛФК · осанка, сколиоз, реабилитация</div>
+      <p class="doc-bio">Более 10 лет в лечебной физкультуре. Ведёт направления «Спина и шея» и «Осанка и сколиоз». На занятии — от первого теста до последнего повторения.</p>
+    </div>
+    <div class="doc reveal" style="--d:.15s">
+      <div class="doc-photo">
+        <span class="doc-idx">тр. /02</span>
+        <span class="doc-letter">Р</span>
+      </div>
+      <h3 class="doc-name">Рома</h3>
+      <div class="doc-role">Тренер ЛФК · реабилитолог</div>
+      <p class="doc-bio">Специализация — восстановление после долгих перерывов и травм. Автор форматов «Мягкая нагрузка» и «Здоровый фитнес» в студии. За движение — всегда, через боль — никогда.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="sec-label reveal">( 04 ) — отзывы</div>
+  <div class="reviews-inner reveal">
+    <div class="review-wrap">
+      <div class="rev-btns">
+        <a id="revPrev" aria-label="Предыдущий отзыв">←</a>
+      </div>
+      <div>
+        <div class="review-quote" id="revQuote"></div>
+        <div class="review-meta" id="revMeta"></div>
+      </div>
+      <div class="rev-btns">
+        <a id="revNext" aria-label="Следующий отзыв">→</a>
+      </div>
+    </div>
+    <div class="review-ctl">
+      <div class="rev-counter"><b id="revCur">01</b> / <span id="revTotal">03</span></div>
+      <div class="rev-bar"><span id="revBar"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="sec-label reveal">( 05 ) — контакты</div>
+  <div class="contacts-grid">
+    <div class="reveal">
+      <div class="addr">
+        <span class="a1">Большая</span>
+        <span class="a2">Посадская,</span>
+        <span class="a3">16 <em>— СПб</em></span>
+      </div>
+      <div class="c-hours">
+        <b>Пн — Пт</b> · 9:00 — 21:00<br>
+        <b>Сб — Вс</b> · 10:00 — 18:00
+      </div>
+    </div>
+    <div class="reveal" style="--d:.15s">
+      <div class="c-links">
+        <a class="c-link" href="https://t.me/username" target="_blank" rel="noopener">Telegram <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp <span class="cl-sub">Записаться →</span></a>
+      </div>
+      <p class="c-note">Отвечаем в течение часа</p>
+    </div>
+  </div>
+  <div class="map-wrap reveal">
+    <div class="map-tag">Локация · Большая Посадская, 16</div>
+    <iframe class="map-frame"
+      src="https://yandex.ru/map-widget/v1/?text=Санкт-Петербург%2C%20Большая%20Посадская%2016&z=16"
+      title="Карта: студия ЛФК ОСЬ, Большая Посадская 16"
+      loading="lazy"
+      allowfullscreen></iframe>
+    <a class="map-link" href="https://yandex.ru/maps/?text=Санкт-Петербург%2C%20Большая%20Посадская%2016&z=16" target="_blank" rel="noopener">Открыть в Яндекс.Картах →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="f-word">ОСЬ</div>
+  <div class="f-meta">
+    <span>© 2026</span>
+    <span>Студия лечебной физкультуры</span>
+    <span>Большая Посадская, 16 — СПб</span>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 40);
+  if (y > lastY && y > 300) header.classList.add('hide');
+  else header.classList.remove('hide');
+  lastY = y;
+}, {passive:true});
+
+window.addEventListener('load', () => document.body.classList.add('loaded'));
+setTimeout(() => document.body.classList.add('loaded'), 900);
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const mqText = 'Лечебная физкультура <i>·</i> под контролем тренера <i>·</i> Большая Посадская, 16 <i>·</i> СПб <i>·</i> ';
+document.getElementById('marqueeTrack').innerHTML =
+  '<span>' + mqText.repeat(4) + '</span><span>' + mqText.repeat(4) + '</span>';
+
+const reviews = [
+  {t:'«Боль в шее ушла за два месяца — я просто приходила и делала то, что говорят. Всё под присмотром, ничего через силу.»',
+   n:'Марина', m:'«Спина и шея»'},
+  {t:'«У дочери сколиоз. Здесь не “зарядка в толпе”, а работа тренера с каждым движением — динамика видна на снимках.»',
+   n:'Екатерина', m:'мама ученицы · «Осанка и сколиоз»'},
+  {t:'«После долгого перерыва боялся любых залов. Мягкая нагрузка вернула форму без боли и паники.»',
+   n:'Сергей', m:'«Мягкая нагрузка»'}
+];
+let cur = 0, timer;
+const quote = document.getElementById('revQuote');
+const meta = document.getElementById('revMeta');
+const curEl = document.getElementById('revCur');
+const bar = document.getElementById('revBar');
+
+function render(initial) {
+  const r = reviews[cur];
+  quote.textContent = r.t;
+  meta.innerHTML = '<b>' + r.n + '</b> · ' + r.m;
+  curEl.textContent = String(cur + 1).padStart(2, '0');
+  restartBar();
+  if (!initial) {
+    clearInterval(timer);
+    timer = setInterval(() => show(cur + 1), 7000);
+  }
+}
+function restartBar() {
+  bar.style.transition = 'none';
+  bar.style.width = '0%';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    bar.style.transition = 'width 7s linear';
+    bar.style.width = '100%';
+  }));
+}
+function show(i) {
+  quote.classList.add('out');
+  meta.classList.add('out');
+  setTimeout(() => {
+    cur = (i + reviews.length) % reviews.length;
+    quote.classList.remove('out');
+    meta.classList.remove('out');
+    render(false);
+  }, 350);
+}
+render(true);
+timer = setInterval(() => show(cur + 1), 7000);
+document.getElementById('revPrev').addEventListener('click', () => show(cur - 1));
+document.getElementById('revNext').addEventListener('click', () => show(cur + 1));
+
+const revSec = document.getElementById('reviews');
+revSec.addEventListener('mouseenter', () => clearInterval(timer));
+revSec.addEventListener('mouseleave', () => {
+  clearInterval(timer);
+  timer = setInterval(() => show(cur + 1), 7000);
+});
+</script>
+</body>
+</html>
