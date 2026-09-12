@@ -83,26 +83,60 @@ nav a::after{
 nav a:hover{color:var(--cream)}
 nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .hdr-btn{
-  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;
   background:var(--cream);color:var(--bg);
   border:1px solid var(--cream);
-  padding:15px 34px;
+  padding:10px 24px;
   transition:background .35s,color .35s,border-color .35s,transform .35s;
   white-space:nowrap;
   display:inline-flex;align-items:center;gap:10px;
 }
 .hdr-btn:hover{background:var(--sage);border-color:var(--sage);color:#1C2117;transform:translateY(-2px)}
-@media(max-width:1020px){nav{display:none}}
+/* ---------- burger & mobile menu ---------- */
+.burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;background:none;border:none;cursor:pointer;
+  padding:6px;order:2;margin-left:auto;margin-right:16px;
+}
+.burger span{
+  display:block;width:100%;height:2px;background:var(--cream);
+  transition:transform .3s,opacity .3s;
+}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mob-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
+  background:rgba(31,36,26,.95);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:32px;
+  opacity:0;transition:opacity .35s;
+}
+.mob-menu.open{display:flex;opacity:1}
+.mob-menu a{
+  font-family:var(--mono);font-size:18px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);transition:color .3s;
+}
+.mob-menu a:hover{color:var(--sage)}
+
+.hero-cta.btn-solid{display:none;margin-top:24px;padding:14px 28px;font-size:14px;width:auto;align-self:flex-start}
+
+@media(max-width:1020px){
+  nav{display:none}
+  .burger{display:flex;margin-left:auto;margin-right:0}
+  .hdr-btn{display:none}
+  .hero-cta.btn-solid{display:inline-flex}
+}
 @media(max-width:680px){
   header,header.scrolled{padding:14px 20px}
-  .hdr-btn{padding:12px 22px}
 }
 
 /* ---------- hero ---------- */
 .hero{
   min-height:100vh;
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:150px 44px 0;
+  padding:100px 44px 0;
   position:relative;
 }
 .hero-kicker{
@@ -164,7 +198,7 @@ body.loaded .mask>span{transform:none}
 }
 .hero-meta .coords{color:var(--sage)}
 @media(max-width:760px){
-  .hero{padding:120px 20px 0}
+  .hero{padding:80px 20px 0}
   .hero-bottom{flex-direction:column;align-items:flex-start}
   .hero-meta{text-align:left}
 }
@@ -351,6 +385,25 @@ section{padding:140px 44px}
   .dir-row h3{max-width:none}
 }
 
+/* ---------- online ---------- */
+.online-card{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;
+}
+.online-photo{overflow:hidden}
+.online-photo img{width:100%;display:block;filter:grayscale(1) sepia(.25) brightness(.82) contrast(1.05)}
+.online-title{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,3.6vw,50px);line-height:1.2;margin-bottom:24px;
+}
+.online-desc{
+  font-size:17px;font-weight:300;color:var(--dim);line-height:1.6;
+  margin-bottom:28px;max-width:36ch;
+}
+.online-card .dir-tag{text-align:left;line-height:2}
+@media(max-width:860px){
+  .online-card{grid-template-columns:1fr;gap:32px}
+}
+
 /* ---------- doctors ---------- */
 .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
 .doc{border-top:1px solid var(--line);padding-top:32px}
@@ -444,6 +497,38 @@ section{padding:140px 44px}
   .rev-btns a{width:56px;height:56px;font-size:20px}
   .review-quote{min-height:0}
   .review-ctl{margin-top:36px;gap:24px}
+}
+
+/* ---------- prices ---------- */
+.prices{background:var(--bg2)}
+.price-list{border-bottom:1px solid var(--line)}
+.price-row{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  align-items:baseline;gap:24px;
+  padding:36px 20px;
+  border-top:1px solid var(--line);
+  transition:background .45s;
+}
+.price-row:hover{background:rgba(237,232,218,.04)}
+.price-name{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(22px,2.8vw,36px);line-height:1.2;
+}
+.price-dur{
+  font-family:var(--mono);font-size:15px;letter-spacing:.14em;
+  color:var(--dim);white-space:nowrap;
+}
+.price-val{
+  font-family:var(--mono);font-size:clamp(18px,2vw,24px);font-weight:500;
+  letter-spacing:.06em;color:var(--sage);white-space:nowrap;
+  min-width:110px;text-align:right;
+}
+@media(max-width:680px){
+  .price-row{grid-template-columns:1fr auto;gap:12px 20px}
+  .price-name{grid-column:1/-1}
+  .price-dur{font-size:13px}
+  .price-val{font-size:16px;min-width:auto}
 }
 
 /* ---------- contacts ---------- */
@@ -554,27 +639,42 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   <a href="#" class="logo">ОСЬ</a>
   <nav>
     <a href="#about">студия</a>
-    <a href="#directions">направления</a>
-    <a href="#docs">тренеры</a>
+    <a href="#directions">с чем работаем</a>
+    <a href="#online">онлайн</a>
+    <a href="#docs">специалисты</a>
     <a href="#reviews">отзывы</a>
+    <a href="#prices">цены</a>
     <a href="#contacts">контакты</a>
   </nav>
-  <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="hdr-btn">записаться →</a>
+  <a href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener" class="hdr-btn">записаться →</a>
+  <button class="burger" id="burger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#about">студия</a>
+  <a href="#directions">с чем работаем</a>
+  <a href="#online">онлайн</a>
+  <a href="#docs">специалисты</a>
+  <a href="#reviews">отзывы</a>
+  <a href="#prices">цены</a>
+  <a href="#contacts">контакты</a>
+</div>
 
 <main>
 
 <section class="hero">
-  <div class="hero-kicker">Студия лечебной физкультуры</div>
+  <div class="hero-kicker">Центр ЛФК и массажа</div>
   <h1>
     <span class="hl1"><span class="mask"><span>Ровная ось —</span></span></span>
     <span class="hl2"><span class="mask"><span>Свободное</span></span></span>
     <span class="hl3"><span class="mask"><span>тело <em>в движении</em></span></span></span>
   </h1>
+  <a href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener" class="hero-cta btn-solid">записаться →</a>
   <div class="hero-bottom">
     <div class="hero-right">
-      <p>Тренировки под контролем тренеров. Без шаблонов, боли и самодеятельности — от диагностики до результата.</p>
-      <a href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener" class="btn-solid">Написать →</a>
+      <p>Тренировки и массаж проводят дипломированные специалисты. Без шаблонов и боли — от диагностики до результата.</p>
     </div>
     <div class="hero-meta">
       Большая Посадская, 16<br>
@@ -589,27 +689,21 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 </div>
 
 <section id="about">
-  <div class="sec-label reveal">( 01 ) — о студии</div>
+  <div class="sec-label reveal">о студии</div>
   <div class="about-grid">
     <p class="about-big reveal">
-      Каждое занятие — под <em>контролем тренера</em>.
-      Мы следим за техникой, дыханием и самочувствием.
-      Программа строится под <em>ваше тело</em> — не под шаблон.
+      <em>Первичный прием</em> состоит из осмотра, функциональной диагностики и тестового занятия.
+      Мы составляем <em>индивидуальную программу</em> под ваш запрос. Следим за техникой, дыханием и самочувствием.
     </p>
-    <div class="about-side reveal" style="--d:.15s">
-      <p>ОСЬ — студия лечебной физкультуры на Петроградской стороне. Работаем с осанкой, спиной и здоровой нагрузкой. Малые группы, никакого «сам себе тренер».</p>
-    </div>
   </div>
   <div class="gallery reveal">
     <div class="g-item">
-      <img src="https://picsum.photos/seed/os-hall/1200/900.jpg" alt="Зал студии ЛФК ОСЬ" loading="lazy">
-      <span class="g-cap">Зал для групповых занятий</span>
-      <span class="g-num">01</span>
+      <img src="https://picsum.photos/seed/os-hall/1200/900.jpg" alt="Зал для тренировок ЛФК ОСЬ" loading="lazy">
+      <span class="g-cap">Индивидуальные занятия под контролем тренера</span>
     </div>
     <div class="g-item">
-      <img src="https://picsum.photos/seed/os-train/900/700.jpg" alt="Тренировка под контролем тренера" loading="lazy">
-      <span class="g-cap">Занятие под контролем тренера</span>
-      <span class="g-num">02</span>
+      <img src="https://picsum.photos/seed/os-train/900/700.jpg" alt="Зал для массажа" loading="lazy">
+      <span class="g-cap">Кабинет массажа</span>
     </div>
   </div>
   <div class="stats reveal">
@@ -618,64 +712,96 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
       <div class="stat-l">лет практики тренеров</div>
     </div>
     <div class="stat">
-      <div class="stat-n">4</div>
-      <div class="stat-l">направления нагрузки</div>
+      <div class="stat-n">500<em>+</em></div>
+      <div class="stat-l">довольных клиентов</div>
     </div>
     <div class="stat">
       <div class="stat-n">2</div>
-      <div class="stat-l">тренера ведут занятия</div>
+      <div class="stat-l">специалиста ведут занятия</div>
     </div>
     <div class="stat">
-      <div class="stat-n">6</div>
-      <div class="stat-l">человек максимум в группе</div>
+      <div class="stat-n">2</div>
+      <div class="stat-l">человека максимум в группе</div>
     </div>
   </div>
 </section>
 
 <section class="directions" id="directions">
-  <div class="sec-label reveal">( 02 ) — направления</div>
+  <div class="sec-label reveal">с чем работаем</div>
   <div class="dir-list">
     <div class="dir-row reveal">
       <div class="dir-num">/01</div>
       <div class="dir-photo"><img src="https://picsum.photos/seed/os-back/900/500.jpg" alt="Спина и шея" loading="lazy"></div>
       <div class="dir-main">
-        <h3>Спина и шея</h3>
-        <p>Снимаем напряжение офисной осанки, укрепляем мышечный корсет, работаем с болью от сидячего образа жизни.</p>
+        <h3>Боли в спине и шее</h3>
+        <p>Работаем с межпозвонковой грыжей, укрепляем мышечный корсет и уменьшаем боль в спине.</p>
       </div>
-      <div class="dir-tag">офисная осанка<br>мышечный корсет</div>
+      <div class="dir-tag">здоровая осанка<br>мышечный корсет</div>
     </div>
     <div class="dir-row reveal" style="--d:.08s">
       <div class="dir-num">/02</div>
       <div class="dir-photo"><img src="https://picsum.photos/seed/os-posture/900/500.jpg" alt="Осанка и сколиоз" loading="lazy"></div>
       <div class="dir-main">
-        <h3>Осанка и сколиоз</h3>
-        <p>Коррекция осанки у детей и взрослых. Работа со сколиозом под наблюдением тренера, контроль динамики.</p>
+        <h3>Артрит и артрозы</h3>
+        <p>Работает с гонартрозом, коксартрозом и артрозом плечевого сустава.</p>
       </div>
-      <div class="dir-tag">дети и взрослые<br>контроль тренера</div>
+      <div class="dir-tag">боли в коленном<br> тазобедренном<br>и плечевом суставе</div>
+    </div>
+        <div class="dir-row reveal" style="--d:.08s">
+      <div class="dir-num">/03</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-posture/900/500.jpg" alt="Осанка и сколиоз" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>Массаж</h3>
+        <p>Кинезиологический, спортивный, расслабляющий массаж.</p>
+      </div>
+      <div class="dir-tag">острая боль и спазмы<br>расслабление мышц и фасций</div>
     </div>
     <div class="dir-row reveal" style="--d:.16s">
-      <div class="dir-num">/03</div>
+      <div class="dir-num">/04</div>
       <div class="dir-photo"><img src="https://picsum.photos/seed/os-soft/900/500.jpg" alt="Мягкая нагрузка" loading="lazy"></div>
       <div class="dir-main">
-        <h3>Мягкая нагрузка</h3>
-        <p>Бережный формат для восстановления после травм и в период ремиссии — движение без боли и стресса.</p>
+        <h3>Работа с детьми</h3>
+        <p>Коррекция осанки, сколиоза, кифоза, вальгусных стоп, плоскостопия и общая физическая подготовка ребенка.</p>
       </div>
-      <div class="dir-tag">восстановление<br>ремиссия</div>
+      <div class="dir-tag">координация движений<br>мышечный каркас</br>функциональная подвижность</div>
     </div>
     <div class="dir-row reveal" style="--d:.24s">
-      <div class="dir-num">/04</div>
+      <div class="dir-num">/05</div>
       <div class="dir-photo"><img src="https://picsum.photos/seed/os-fit/900/500.jpg" alt="Здоровый фитнес" loading="lazy"></div>
       <div class="dir-main">
-        <h3>«Здоровый фитнес»</h3>
-        <p>Функциональные тренировки без ударных нагрузок — форма и выносливость без риска для суставов.</p>
+        <h3>Реабилитация после травм</h3>
+        <p>Восстановление после операций, переломов, надрывов связок, сухожилий, пластики ПКС и травм стопы.</p>
       </div>
-      <div class="dir-tag">без ударных нагрузок</div>
+      <div class="dir-tag">восстановление<br>улучшение подвижности</div>
+    </div>
+    <div class="dir-row reveal" style="--d:.24s">
+      <div class="dir-num">/06</div>
+      <div class="dir-photo"><img src="https://picsum.photos/seed/os-fit/900/500.jpg" alt="Здоровый фитнес" loading="lazy"></div>
+      <div class="dir-main">
+        <h3>Здоровый фитнес</h3>
+        <p>Симбиоз бодибилдинга и лечебной физкультуры. Набор мышечной массы, жиросжигание, гибкость и тонус и укрепление глубоких мышц-стабилизаторов.</p>
+      </div>
+      <div class="dir-tag">без компрессии</br>и осевой нагрузки</br>на позвоночник и суставы</div>
+    </div>
+  </div>
+</section>
+
+<section id="online">
+  <div class="sec-label reveal">онлайн</div>
+  <div class="online-card reveal">
+    <div class="online-photo">
+      <img src="https://picsum.photos/seed/os-online/900/700.jpg" alt="Онлайн-тренировки ЛФК ОСЬ" loading="lazy">
+    </div>
+    <div class="online-info">
+      <h2 class="online-title">Онлайн-программа</h2>
+      <p class="online-desc">Проводим диагностику по видеосвязи, составляем индивидуальную программу тренировок и сопровождаем на каждом этапе — из любой точки мира.</p>
+      <div class="dir-tag">видеоконсультация<br>программа тренировок<br>контроль динамики</div>
     </div>
   </div>
 </section>
 
 <section id="docs">
-  <div class="sec-label reveal">( 03 ) — тренеры</div>
+  <div class="sec-label reveal">специалисты</div>
   <div class="docs-grid">
     <div class="doc reveal">
       <div class="doc-photo">
@@ -699,7 +825,7 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 </section>
 
 <section class="reviews" id="reviews">
-  <div class="sec-label reveal">( 04 ) — отзывы</div>
+  <div class="sec-label reveal">отзывы</div>
   <div class="reviews-inner reveal">
     <div class="review-wrap">
       <div class="rev-btns prev">
@@ -720,8 +846,44 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   </div>
 </section>
 
+<section class="prices" id="prices">
+  <div class="sec-label reveal">цены</div>
+  <div class="price-list">
+    <div class="price-row reveal">
+      <div class="price-name">Первичная консультация</div>
+      <div class="price-dur">50 мин</div>
+      <div class="price-val">3 000 ₽</div>
+    </div>
+    <div class="price-row reveal" style="--d:.06s">
+      <div class="price-name">Индивидуальное занятие</div>
+      <div class="price-dur">50 мин</div>
+      <div class="price-val">3 000 ₽</div>
+    </div>
+    <div class="price-row reveal" style="--d:.12s">
+      <div class="price-name">Занятие для двоих</div>
+      <div class="price-dur">50 мин</div>
+      <div class="price-val">4 000 ₽</div>
+    </div>
+    <div class="price-row reveal" style="--d:.18s">
+      <div class="price-name">Массаж общий</div>
+      <div class="price-dur">60 мин</div>
+      <div class="price-val">3 500 ₽</div>
+    </div>
+    <div class="price-row reveal" style="--d:.24s">
+      <div class="price-name">Массаж по зонам</div>
+      <div class="price-dur">45 мин</div>
+      <div class="price-val">3 000 ₽</div>
+    </div>
+    <div class="price-row reveal" style="--d:.30s">
+      <div class="price-name">Индивидуальная видеопрограмма для дома</div>
+      <div class="price-dur">50 мин</div>
+      <div class="price-val">4 000 ₽</div>
+    </div>
+  </div>
+</section>
+
 <section id="contacts">
-  <div class="sec-label reveal">( 05 ) — контакты</div>
+  <div class="sec-label reveal">контакты</div>
   <div class="contacts-grid">
     <div class="reveal">
       <div class="addr">
@@ -736,7 +898,9 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
     </div>
     <div class="reveal" style="--d:.15s">
       <div class="c-links">
-        <a class="c-link" href="https://t.me/paakov?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5%20%D0%9B%D0%A4%D0%9A" target="_blank" rel="noopener">Telegram <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">Telegram <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://wa.me/79992120902?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">WhatsApp <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://max.ru/u/f9LHodD0cOJ0ZnyD8_NFe1TKREASRWpufXJTwBXek-FGKIo-zZr9YJfZ1Mw" target="_blank" rel="noopener">MAX <span class="cl-sub">Записаться →</span></a>
       </div>
       <p class="c-note">Отвечаем в течение часа</p>
       <div class="map-wrap">
@@ -758,12 +922,25 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   <div class="f-word">ОСЬ</div>
   <div class="f-meta">
     <span>© 2026</span>
-    <span>Студия лечебной физкультуры</span>
+    <span>Центр ЛФК и массажа</span>
     <span>Большая Посадская, 16 — СПб</span>
   </div>
 </footer>
 
 <script>
+const burger = document.getElementById('burger');
+const mobMenu = document.getElementById('mobMenu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  mobMenu.classList.toggle('open');
+  document.body.style.overflow = mobMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('active');
+  mobMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
 const header = document.getElementById('header');
 let lastY = 0;
 window.addEventListener('scroll', () => {
@@ -787,7 +964,7 @@ const io = new IntersectionObserver(entries => {
 }, {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-const mqText = 'Лечебная физкультура <i>·</i> под контролем тренера <i>·</i> Большая Посадская, 16 <i>·</i> СПб <i>·</i> ';
+const mqText = 'Массаж <i>·</i> Занятия ЛФК <i>·</i> Под контролем тренера <i>·</i> Большая Посадская, 16 <i>·</i> СПб <i>·</i> ';
 document.getElementById('marqueeTrack').innerHTML =
   '<span>' + mqText.repeat(4) + '</span><span>' + mqText.repeat(4) + '</span>';
 
