@@ -124,12 +124,17 @@ nav a:hover::after{transform:scaleX(1);transform-origin:left}
 
 @media(max-width:1020px){
   nav{display:none}
-  .burger{display:flex;margin-left:auto;margin-right:0}
+  .burger{display:flex;margin-left:0}
   .hdr-btn{display:none}
+  .hdr-right{margin-left:auto}
   .hero-cta.btn-solid{display:inline-flex}
 }
 @media(max-width:680px){
   header,header.scrolled{padding:14px 20px}
+  .hdr-right{margin-right:14px}
+  .msg-icons{gap:8px}
+  .msg-icons a{width:32px;height:32px}
+  .msg-icons a img{width:17px;height:17px}
 }
 
 /* ---------- hero ---------- */
@@ -240,7 +245,7 @@ section{padding:140px 44px}
 .about-big{
   font-family:var(--serif);font-weight:400;
   font-size:clamp(26px,3.6vw,50px);line-height:1.28;letter-spacing:-.005em;
-  max-width:22ch;
+  max-width:32ch;
 }
 .about-side{
   display:flex;flex-direction:column;gap:48px;padding-top:12px;
@@ -393,7 +398,7 @@ section{padding:140px 44px}
 .online-photo img{width:100%;display:block;filter:grayscale(1) sepia(.25) brightness(.82) contrast(1.05)}
 .online-title{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(28px,3.6vw,50px);line-height:1.2;margin-bottom:24px;
+  font-size:clamp(28px,3.6vw,50px);line-height:1.2;margin-bottom:clamp(32px,4vw,56px);
 }
 .online-desc{
   font-size:17px;font-weight:300;color:var(--dim);line-height:1.6;
@@ -406,7 +411,7 @@ section{padding:140px 44px}
 
 /* ---------- doctors ---------- */
 .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
-.doc{border-top:1px solid var(--line);padding-top:32px}
+.doc{padding-top:0}
 .doc-photo{
   aspect-ratio:3/3.6;
   background:linear-gradient(155deg,#39422B 0%,#232A1B 100%);
@@ -443,60 +448,17 @@ section{padding:140px 44px}
 @media(max-width:860px){.docs-grid{grid-template-columns:1fr;gap:56px}}
 
 /* ---------- reviews ---------- */
-.reviews{background:var(--bg2)}
-.reviews-inner{max-width:980px}
-.review-wrap{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:clamp(24px,4vw,64px);
+.reviews{background:var(--bg2);padding-top:80px;padding-bottom:40px}
+@media(max-width:760px){.reviews{padding-top:60px;padding-bottom:24px}}
+.reviews-widget{
+  display:flex;justify-content:center;
 }
-.review-quote{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(24px,3.4vw,44px);line-height:1.35;
-  min-height:5em;
-  transition:opacity .35s;
+.reviews-widget iframe{
+  width:100%;max-width:700px;height:800px;
+  border:1px solid var(--line);border-radius:8px;
 }
-.review-quote.out{opacity:0}
-.review-meta{
-  font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);margin-top:44px;transition:opacity .35s;
-}
-.review-meta b{color:var(--cream);font-weight:500}
-.review-meta.out{opacity:0}
-.review-ctl{
-  margin-top:48px;display:flex;align-items:center;gap:36px;
-}
-.rev-counter{font-family:var(--mono);font-size: 15px;letter-spacing:.14em;color:var(--dim)}
-.rev-counter b{color:var(--cream);font-weight:500}
-.rev-bar{flex:1;height:1px;background:var(--line);position:relative}
-.rev-bar span{
-  position:absolute;left:0;top:0;height:100%;width:0;background:var(--sage);
-  display:block;
-}
-.rev-btns{display:flex;gap:16px}
-.rev-btns a{
-  width:64px;height:64px;
-  border:1px solid var(--line);border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:22px;color:var(--cream);
-  cursor:pointer;flex-shrink:0;
-  transition:background .35s,color .35s,border-color .35s,transform .35s;
-}
-.rev-btns a:hover{background:var(--cream);color:var(--bg);border-color:var(--cream);transform:translateY(-2px)}
 @media(max-width:680px){
-  .review-wrap{
-    grid-template-columns:auto auto;
-    justify-content:space-between;
-    row-gap:28px;
-  }
-  .review-wrap>div:not(.rev-btns){grid-column:1/-1}
-  .rev-btns{grid-column:auto}
-  .rev-btns.prev{order:2}
-  .rev-btns.next{order:3}
-  .rev-btns a{width:56px;height:56px;font-size:20px}
-  .review-quote{min-height:0}
-  .review-ctl{margin-top:36px;gap:24px}
+  .reviews-widget iframe{height:600px}
 }
 
 /* ---------- prices ---------- */
@@ -533,7 +495,7 @@ section{padding:140px 44px}
 
 /* ---------- contacts ---------- */
 .contacts-grid{
-  display:grid;grid-template-columns:1fr 1.35fr;gap:64px;align-items:start;
+  display:grid;grid-template-columns:1fr auto;gap:64px;align-items:end;
 }
 .addr .a1{
   display:block;font-family:var(--serif);font-style:italic;font-weight:400;
@@ -555,27 +517,51 @@ section{padding:140px 44px}
 }
 .c-links{display:flex;flex-direction:column;gap:14px}
 .c-link{
-  font-family:var(--serif);font-size:clamp(26px,3vw,40px);
-  padding:22px 34px;
+  font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);
+  padding:22px 24px;
   border:1px solid var(--cream);
   background:var(--cream);color:var(--bg);
-  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  display:flex;align-items:center;gap:12px;
   transition:background .4s,color .4s,border-color .4s,transform .4s;
 }
-.c-link .cl-sub{font-family:var(--mono);font-size:14px;color:#7A8A45;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.c-link .cl-icon{width:30px;height:30px;flex-shrink:0}
+.c-link .cl-sub{font-family:var(--mono);font-size:14px;color:#7A8A45;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;margin-left:auto}
 .c-link:hover{background:var(--sage);color:#1C2117;border-color:var(--sage);transform:translateY(-2px)}
+
+/* ---------- messenger icons in header ---------- */
+.msg-icons{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.msg-icons a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--dim2);transition:border-color .35s,transform .35s,opacity .35s;opacity:.7}
+.msg-icons a:hover{border-color:var(--sage);opacity:1;transform:translateY(-2px)}
+.msg-icons a img{width:20px;height:20px}
+.hdr-right{position:relative;display:flex;align-items:center;flex-shrink:0}
+.hdr-right .hdr-btn{position:relative;z-index:2}
+@media(min-width:1021px){
+  .hdr-right .msg-icons{
+    position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:22px;
+  }
+  header.hide{transform:translateY(calc(-100% - 80px))}
+}
 .c-note{
   font-family:var(--mono);font-size: 15px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--dim2);margin:28px 0 40px;
 }
 .c-hours{font-family:var(--mono);font-size:15px;letter-spacing:.08em;color:var(--dim);line-height:2.3}
 .c-hours b{color:var(--cream);font-weight:500}
+.contacts-bottom{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:stretch;
+  margin-top:64px;
+}
+.contacts-bottom .cb-links{display:flex;flex-direction:column;height:100%}
+.contacts-bottom .cb-links .c-links{flex:1;display:flex;flex-direction:column;gap:14px}
+.contacts-bottom .cb-links .c-link{flex:1}
+.contacts-bottom .cb-links .c-note{flex-shrink:0}
+.contacts-bottom .map-wrap{margin-top:0;height:100%;display:flex;flex-direction:column}
+.contacts-bottom .map-frame{flex:1;height:auto;min-height:280px}
 @media(max-width:860px){
-  .contacts-grid{grid-template-columns:1fr;gap:56px}
+  .contacts-grid{grid-template-columns:1fr;gap:56px;max-width:540px;margin:0 auto}
+  .contacts-bottom{grid-template-columns:1fr;max-width:540px;margin:64px auto 0}
 }
 .map-wrap{
-  margin-top:44px;
-  border:1px solid var(--line);
   position:relative;overflow:hidden;
 }
 .map-frame{
@@ -640,13 +626,20 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   <nav>
     <a href="#about">студия</a>
     <a href="#directions">с чем работаем</a>
-    <a href="#online">онлайн</a>
+    <a href="#online">онлайн-программа</a>
     <a href="#docs">специалисты</a>
     <a href="#reviews">отзывы</a>
     <a href="#prices">цены</a>
     <a href="#contacts">контакты</a>
   </nav>
-  <a href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener" class="hdr-btn">записаться →</a>
+  <div class="hdr-right">
+    <a href="https://yandex.ru/maps/org/tsentr_lfk_i_massazha/62061529451/?booking%5Bpage%5D=menu&booking%5Bpermalink%5D=62061529451&l=carparks&ll=30.325669%2C59.959697&z=16.5" target="_blank" rel="noopener" class="hdr-btn">записаться →</a>
+    <span class="msg-icons">
+      <a href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener" title="Telegram"><img src="telegram.svg" alt="Telegram"></a>
+      <a href="https://wa.me/79992120902?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener" title="WhatsApp"><img src="whatsapp-icon.svg" alt="WhatsApp"></a>
+      <a href="https://max.ru/u/f9LHodD0cOJ0ZnyD8_NFe1TKREASRWpufXJTwBXek-FGKIo-zZr9YJfZ1Mw" target="_blank" rel="noopener" title="MAX"><img src="MAX(1).svg" alt="MAX"></a>
+    </span>
+  </div>
   <button class="burger" id="burger" aria-label="Меню">
     <span></span><span></span><span></span>
   </button>
@@ -655,7 +648,7 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 <div class="mob-menu" id="mobMenu">
   <a href="#about">студия</a>
   <a href="#directions">с чем работаем</a>
-  <a href="#online">онлайн</a>
+  <a href="#online">онлайн-программа</a>
   <a href="#docs">специалисты</a>
   <a href="#reviews">отзывы</a>
   <a href="#prices">цены</a>
@@ -709,7 +702,7 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   <div class="stats reveal">
     <div class="stat">
       <div class="stat-n">10<em>+</em></div>
-      <div class="stat-l">лет практики тренеров</div>
+      <div class="stat-l">лет практики специалистов</div>
     </div>
     <div class="stat">
       <div class="stat-n">500<em>+</em></div>
@@ -787,15 +780,15 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 </section>
 
 <section id="online">
-  <div class="sec-label reveal">онлайн</div>
+  <div class="sec-label reveal">онлайн-программа</div>
+  <h2 class="online-title reveal">Составление индивидуальной видеопрограммы для занятий дома</h2>
   <div class="online-card reveal">
     <div class="online-photo">
       <img src="https://picsum.photos/seed/os-online/900/700.jpg" alt="Онлайн-тренировки ЛФК ОСЬ" loading="lazy">
     </div>
     <div class="online-info">
-      <h2 class="online-title">Онлайн-программа</h2>
-      <p class="online-desc">Проводим диагностику по видеосвязи, составляем индивидуальную программу тренировок и сопровождаем на каждом этапе — из любой точки мира.</p>
-      <div class="dir-tag">видеоконсультация<br>программа тренировок<br>контроль динамики</div>
+      <p class="online-desc">Для онлайн-занятий мы составляем программу в индивидуальном порядке, в видеоформате, где показываем упражнения, объясняем технику, дыхание, ошибки, акценты, количество повторений и т. д. Программа составляется конкретно под ваш запрос. От вас потребуется: информация о травмах, заболеваниях, заключения (если имеются) по снимкам или от врача, в отдельных случаях — фото для полного сбора информации. Работаем с обратной связью.</p>
+      <div class="dir-tag">Упражнения с собственным весом<br>Эффективные занятия дома<br>Онлайн-консультация</div>
     </div>
   </div>
 </section>
@@ -809,8 +802,8 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
         <span class="doc-letter">И</span>
       </div>
       <h3 class="doc-name">Иван</h3>
-      <div class="doc-role">Тренер ЛФК · осанка, сколиоз, реабилитация</div>
-      <p class="doc-bio">Более 10 лет в лечебной физкультуре. Ведёт направления «Спина и шея» и «Осанка и сколиоз». На занятии — от первого теста до последнего повторения.</p>
+      <div class="doc-role">Кинезиоспециалист · инструктор ЛФК и реабилитации</div>
+      <p class="doc-bio">Более 10 лет в физической реабилитации. Специалист с высшим образованием и квалификацией «физическая терапия» Первого меда.</p>
     </div>
     <div class="doc reveal" style="--d:.15s">
       <div class="doc-photo">
@@ -818,31 +811,18 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
         <span class="doc-letter">Р</span>
       </div>
       <h3 class="doc-name">Рома</h3>
-      <div class="doc-role">Тренер ЛФК · реабилитолог</div>
-      <p class="doc-bio">Специализация — восстановление после долгих перерывов и травм. Автор форматов «Мягкая нагрузка» и «Здоровый фитнес» в студии. За движение — всегда, через боль — никогда.</p>
+      <div class="doc-role">Инструктор ЛФК и реабилитации · массажист · адаптивная физическая культура</div>
+      <p class="doc-bio">Специалист со средним медицинским образованием и высшим образованием Университета имени П. Ф. Лесгафта.</p>
     </div>
   </div>
 </section>
 
 <section class="reviews" id="reviews">
   <div class="sec-label reveal">отзывы</div>
-  <div class="reviews-inner reveal">
-    <div class="review-wrap">
-      <div class="rev-btns prev">
-        <a id="revPrev" aria-label="Предыдущий отзыв">←</a>
-      </div>
-      <div>
-        <div class="review-quote" id="revQuote"></div>
-        <div class="review-meta" id="revMeta"></div>
-      </div>
-      <div class="rev-btns next">
-        <a id="revNext" aria-label="Следующий отзыв">→</a>
-      </div>
-    </div>
-    <div class="review-ctl">
-      <div class="rev-counter"><b id="revCur">01</b> / <span id="revTotal">03</span></div>
-      <div class="rev-bar"><span id="revBar"></span></div>
-    </div>
+  <div class="reviews-widget reveal">
+    <iframe src="https://yandex.ru/maps-reviews-widget/62061529451?comments"
+      title="Отзывы о Центре ЛФК и массажа на Яндекс Картах"
+      loading="lazy"></iframe>
   </div>
 </section>
 
@@ -891,27 +871,31 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
         <span class="a2">Посадская,</span>
         <span class="a3">16 <em>— СПб</em></span>
       </div>
+    </div>
+    <div class="reveal" style="--d:.1s">
       <div class="c-hours">
         <b>Пн — Пт</b> · 9:00 — 21:00<br>
-        <b>Сб — Вс</b> · 10:00 — 18:00
+        <b>Сб — Вс</b> · 9:00 — 20:00
       </div>
     </div>
-    <div class="reveal" style="--d:.15s">
+  </div>
+  <div class="contacts-bottom reveal" style="--d:.15s">
+    <div class="cb-links">
       <div class="c-links">
-        <a class="c-link" href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">Telegram <span class="cl-sub">Записаться →</span></a>
-        <a class="c-link" href="https://wa.me/79992120902?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener">WhatsApp <span class="cl-sub">Записаться →</span></a>
-        <a class="c-link" href="https://max.ru/u/f9LHodD0cOJ0ZnyD8_NFe1TKREASRWpufXJTwBXek-FGKIo-zZr9YJfZ1Mw" target="_blank" rel="noopener">MAX <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://t.me/centr_lfk_massage?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener"><img class="cl-icon" src="telegram.svg" alt="Telegram"> Telegram <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://wa.me/79992120902?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E." target="_blank" rel="noopener"><img class="cl-icon" src="whatsapp-icon.svg" alt="WhatsApp"> WhatsApp <span class="cl-sub">Записаться →</span></a>
+        <a class="c-link" href="https://max.ru/u/f9LHodD0cOJ0ZnyD8_NFe1TKREASRWpufXJTwBXek-FGKIo-zZr9YJfZ1Mw" target="_blank" rel="noopener"><img class="cl-icon" src="MAX(1).svg" alt="MAX"> MAX <span class="cl-sub">Записаться →</span></a>
       </div>
       <p class="c-note">Отвечаем в течение часа</p>
-      <div class="map-wrap">
-        <div class="map-tag">Локация · Большая Посадская, 16</div>
-        <iframe class="map-frame"
-          src="https://yandex.ru/map-widget/v1/?ll=30.325669%2C59.959697&pt=30.325669,59.959697&z=16.5"
-          title="Карта: студия ЛФК ОСЬ, Большая Посадская 16"
-          loading="lazy"
-          allowfullscreen></iframe>
-        <a class="map-link" href="https://yandex.ru/maps/org/tsentr_lfk_i_massazha/62061529451/?ll=30.325669%2C59.959697&z=16.5" target="_blank" rel="noopener">Открыть в Яндекс.Картах →</a>
-      </div>
+    </div>
+    <div class="map-wrap">
+      <div class="map-tag">Локация · Большая Посадская, 16</div>
+      <iframe class="map-frame"
+        src="https://yandex.ru/map-widget/v1/?ll=30.325669%2C59.959697&pt=30.325669,59.959697&z=16.5"
+        title="Карта: студия ЛФК ОСЬ, Большая Посадская 16"
+        loading="lazy"
+        allowfullscreen></iframe>
+      <a class="map-link" href="https://yandex.ru/maps/org/tsentr_lfk_i_massazha/62061529451/?ll=30.325669%2C59.959697&z=16.5" target="_blank" rel="noopener">Открыть в Яндекс.Картах →</a>
     </div>
   </div>
 </section>
@@ -968,60 +952,6 @@ const mqText = 'Массаж <i>·</i> Занятия ЛФК <i>·</i> Под к
 document.getElementById('marqueeTrack').innerHTML =
   '<span>' + mqText.repeat(4) + '</span><span>' + mqText.repeat(4) + '</span>';
 
-const reviews = [
-  {t:'«Боль в шее ушла за два месяца — я просто приходила и делала то, что говорят. Всё под присмотром, ничего через силу.»',
-   n:'Марина', m:'«Спина и шея»'},
-  {t:'«У дочери сколиоз. Здесь не “зарядка в толпе”, а работа тренера с каждым движением — динамика видна на снимках.»',
-   n:'Екатерина', m:'мама ученицы · «Осанка и сколиоз»'},
-  {t:'«После долгого перерыва боялся любых залов. Мягкая нагрузка вернула форму без боли и паники.»',
-   n:'Сергей', m:'«Мягкая нагрузка»'}
-];
-let cur = 0, timer;
-const quote = document.getElementById('revQuote');
-const meta = document.getElementById('revMeta');
-const curEl = document.getElementById('revCur');
-const bar = document.getElementById('revBar');
-
-function render(initial) {
-  const r = reviews[cur];
-  quote.textContent = r.t;
-  meta.innerHTML = '<b>' + r.n + '</b> · ' + r.m;
-  curEl.textContent = String(cur + 1).padStart(2, '0');
-  restartBar();
-  if (!initial) {
-    clearInterval(timer);
-    timer = setInterval(() => show(cur + 1), 7000);
-  }
-}
-function restartBar() {
-  bar.style.transition = 'none';
-  bar.style.width = '0%';
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    bar.style.transition = 'width 7s linear';
-    bar.style.width = '100%';
-  }));
-}
-function show(i) {
-  quote.classList.add('out');
-  meta.classList.add('out');
-  setTimeout(() => {
-    cur = (i + reviews.length) % reviews.length;
-    quote.classList.remove('out');
-    meta.classList.remove('out');
-    render(false);
-  }, 350);
-}
-render(true);
-timer = setInterval(() => show(cur + 1), 7000);
-document.getElementById('revPrev').addEventListener('click', () => show(cur - 1));
-document.getElementById('revNext').addEventListener('click', () => show(cur + 1));
-
-const revSec = document.getElementById('reviews');
-revSec.addEventListener('mouseenter', () => clearInterval(timer));
-revSec.addEventListener('mouseleave', () => {
-  clearInterval(timer);
-  timer = setInterval(() => show(cur + 1), 7000);
-});
 </script>
 </body>
 </html>
