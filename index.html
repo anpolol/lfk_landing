@@ -267,11 +267,10 @@ section{padding:140px 44px}
 }
 .g-item:hover img{transform:scale(1.015)}
 .g-cap{
-  position:absolute;left:16px;bottom:16px;
+  display:block;
   font-family:var(--mono);font-size: 15px;letter-spacing:.16em;text-transform:uppercase;
-  color:#EAF2F8;
+  color:#EAF2F7;
   background:rgba(27,58,82,.72);
-  backdrop-filter:blur(8px);
   padding:9px 16px;
 }
 .g-num{
@@ -624,6 +623,38 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
   transition-delay:var(--d,0s);
 }
 .reveal.visible{opacity:1;transform:none}
+
+/* ---------- video courses ---------- */
+#online{padding-bottom:32px}
+.vcourses-title{margin-top:14vh;margin-bottom:24px}
+.vcourses-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);
+  margin-top:4vh;
+}
+.vcourses-grid h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(22px,2.4vw,32px);line-height:1.25;margin-bottom:20px;
+}
+.vcourses-grid p{
+  font-size:16px;font-weight:300;color:var(--dim);line-height:1.65;
+}
+.vcourses-grid ul{
+  list-style:none;padding:0;margin:0;
+}
+.vcourses-grid ul li{
+  font-size:16px;font-weight:300;color:var(--dim);line-height:1.65;
+  padding-left:18px;position:relative;
+}
+.vcourses-grid ul li::before{
+  content:'•';position:absolute;left:0;color:var(--sage);
+}
+.vcourses-price{
+  font-family:var(--mono);font-size:clamp(18px,2vw,24px);font-weight:500;
+  letter-spacing:.06em;color:var(--sage);margin-bottom:16px;
+}
+@media(max-width:860px){
+  .vcourses-grid{grid-template-columns:1fr;gap:48px}
+}
 </style>
 </head>
 <body>
@@ -797,6 +828,32 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
     <div class="online-info">
       <p class="online-desc">Для онлайн-занятий мы составляем программу в индивидуальном порядке, в видеоформате, где показываем упражнения, объясняем технику, дыхание, ошибки, акценты, количество повторений и т. д. Программа составляется конкретно под ваш запрос. От вас потребуется: информация о травмах, заболеваниях, заключения (если имеются) по снимкам или от врача, в отдельных случаях — фото для полного сбора информации. Работаем с обратной связью.</p>
       <div class="dir-tag">Упражнения с собственным весом<br>Эффективные занятия дома<br>Онлайн-консультация</div>
+    </div>
+  </div>
+
+  <h2 class="online-title vcourses-title reveal">Онлайн видеокурсы</h2>
+  <p class="online-desc reveal" style="max-width:64ch">В данном блоке полноценные видеопрограммы занятий для дома по различным проблемам: восстановление после травм — грыжи и протрузии позвоночника, коррекция осанки, артроз коленного сустава, тазобедренного сустава, плоскостопие, травмы голеностопного, плечевого сустава и другие (уточнить).</p>
+  <div class="vcourses-grid reveal">
+    <div>
+      <h3>Программа занятий «Здоровая спина»</h3>
+      <ul>
+        <li>5 тренировок на все отделы спины</li>
+        <li>Одна консультация</li>
+        <li>Более 35 различных упражнений</li>
+        <li>Тренировки по 15–20 минут каждый день</li>
+      </ul>
+      <div class="vcourses-price">Стоимость: 5 000 ₽</div>
+
+    </div>
+    <div>
+      <h3>Видеокомплекс «Здоровье стопы»</h3>
+      <ul>
+        <li>Расширенная программа: плоскостопие, вальгус, отёки конечностей, подвернутые голеностопы, хронические боли стопы, шпоры</li>
+        <li>Подробное объяснение упражнений, техники, ошибок, кол-во раз и т.д.</li>
+        <li>Разовая коррекция по каждому упражнению</li>
+        <li>Занятие 25 минут</li>
+      </ul>
+      <div class="vcourses-price">Стоимость: 2 000 ₽</div>
     </div>
   </div>
 </section>
