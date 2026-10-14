@@ -132,6 +132,34 @@ nav a:hover::after{transform:scaleX(1);transform-origin:left}
 }
 .mob-menu a:hover{color:var(--sage)}
 
+.mob-dropdown{display:flex;flex-direction:column;align-items:center}
+.mob-dropdown-toggle{display:flex;align-items:center;gap:8px}
+.mob-dropdown-link{
+  font-family:var(--mono);font-size:18px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);transition:color .3s;
+}
+.mob-dropdown-link:hover{color:var(--sage)}
+.mob-dropdown-arrow{
+  background:none;border:none;cursor:pointer;color:var(--dim);
+  padding:4px;display:flex;align-items:center;justify-content:center;
+  transition:transform .3s,color .3s;
+}
+.mob-dropdown-arrow:hover{color:var(--sage)}
+.mob-dropdown-arrow.open{transform:rotate(180deg)}
+.mob-dropdown-list{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .35s ease,padding .35s ease;
+  overflow:hidden;padding-top:0;
+}
+.mob-dropdown-list.open{grid-template-rows:1fr;padding-top:12px}
+.mob-dropdown-inner{min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px;overflow:hidden}
+.mob-dropdown-list a{
+  font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);transition:color .3s;
+  padding:6px 0;opacity:.7;
+}
+.mob-dropdown-list a:hover{color:var(--sage);opacity:1}
+
 .hero-cta.btn-solid{display:none;margin-top:24px;padding:14px 28px;font-size:14px;width:auto;align-self:flex-start}
 
 @media(max-width:1020px){
@@ -722,7 +750,24 @@ footer{overflow:hidden;border-top:1px solid var(--line)}
 
 <div class="mob-menu" id="mobMenu">
   <a href="#about">студия</a>
-  <a href="#directions">с чем работаем</a>
+  <div class="mob-dropdown">
+    <div class="mob-dropdown-toggle">
+      <a href="#directions" class="mob-dropdown-link">с чем работаем</a>
+      <button class="mob-dropdown-arrow" aria-label="Раскрыть направления">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="mob-dropdown-list">
+      <div class="mob-dropdown-inner">
+        <a href="boli-v-spine-i-shee.html">Боли в спине и шее</a>
+        <a href="reabilitaciya-posle-travm.html">Реабилитация после травм</a>
+        <a href="kabinet-massazha.html">Массаж</a>
+        <a href="rabota-s-detmi.html">Работа с детьми</a>
+        <a href="artrit-i-artrozy.html">Артрит и артрозы</a>
+        <a href="zdorovyj-fitnes.html">Здоровый фитнес</a>
+      </div>
+    </div>
+  </div>
   <a href="#online">онлайн-программа</a>
   <a href="#docs">специалисты</a>
   <a href="#reviews">отзывы</a>
@@ -1036,6 +1081,14 @@ mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   mobMenu.classList.remove('open');
   document.body.style.overflow = '';
 }));
+
+const dropdownArrow = document.querySelector('.mob-dropdown-arrow');
+const dropdownList = document.querySelector('.mob-dropdown-list');
+dropdownArrow.addEventListener('click', (e) => {
+  e.stopPropagation();
+  dropdownArrow.classList.toggle('open');
+  dropdownList.classList.toggle('open');
+});
 
 const header = document.getElementById('header');
 let lastY = 0;
